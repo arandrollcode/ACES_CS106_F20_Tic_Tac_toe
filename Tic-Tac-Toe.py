@@ -27,55 +27,25 @@ class TTTGame:
         b['font'] = 'Helvetica'
         b['fg'] = 'deep pink'
         b['bd'] = 10
-        b['height'] = 4
-        b['width'] = 10
+        b['height'] = 8
+        b['width'] = 20
         b['relief'] = RAISED
         
         return b
+
 
     ## Create 9 buttons and arrange them in a 3x3 grid
     def create_buttons(self):
         buttons = list()
 
         ## TODO: Create 9 buttons, arrange them in a 3x3 grid, and add them to the list
-
-        but1 = self.create_button()
-        buttons.append(but1)
-        but1.grid(row=0, column=0)
- 
-        but2 = self.create_button()
-        buttons.append(but2)
-        but2.grid(row=1, column=0)
-
-        but3 = self.create_button()
-        buttons.append(but3)
-        but3.grid(row=2, column=0)
-
-        but4 = self.create_button()
-        buttons.append(but4)
-        but4.grid(row=0, column=1)
-
-        but5 = self.create_button()
-        buttons.append(but5)
-        but5.grid(row=1, column=1)
-
-        but6 = self.create_button()
-        buttons.append(but6)
-        but6.grid(row=2, column=1)
-
-        but7 = self.create_button()
-        buttons.append(but7)
-        but7.grid(row=0, column=2)
-
-        but8 = self.create_button()
-        buttons.append(but8)
-        but8.grid(row=1, column=2)
-
-        but9 = self.create_button()
-        buttons.append(but9)
-        but9.grid(row=2, column=2)
-                    
+        for i in range(3):
+            for j in range(3):
+                but = self.create_button()
+                but.grid(row=i, column=j)
+                buttons.append(but)
         return buttons
+
 
     ## Do this when a button is clicked
     def button_click(self, button):
@@ -98,32 +68,55 @@ class TTTGame:
         ## If player_turn was False, change it to True
         self.player_turn = not self.player_turn
 
+
     def disable_all_buttons(self):
         ## TODO: Disable all of the buttons
-        self.buttons['state'] = DISABLED
+        for button in self.buttons:        
+            button['state'] = DISABLED
+
         
     def check_winner(self):
-        char = ''
+        char = 'X'
         
         ## TODO: Check which player's turn it is and make sure char is correct
         ## Player 1 is always 'X'
         ## Player 2 is always 'O'
-        if self.player_turn:
-            char = 'X'
-        else:
+        if not self.player_turn:
             char = 'O'
 
         hasWon = False
         
         ## TODO: Check if the text of three buttons in a row equals char
 
+        if self.buttons[0]['text'] == self.buttons[1]['text'] == self.buttons[2]['text'] == char:
+            hasWon = True
+        if self.buttons[3]['text'] == self.buttons[4]['text'] == self.buttons[5]['text'] == char:
+            hasWon = True
+        if self.buttons[6]['text'] == self.buttons[7]['text'] == self.buttons[8]['text'] == char:
+            hasWon = True
+
         ## TODO: Check if the text of three buttons in a column equals char
+
+        if self.buttons[0]['text'] == self.buttons[3]['text'] == self.buttons[6]['text'] == char:
+            hasWon = True
+        if self.buttons[1]['text'] == self.buttons[4]['text'] == self.buttons[7]['text'] == char:
+            hasWon = True
+        if self.buttons[2]['text'] == self.buttons[5]['text'] == self.buttons[8]['text'] == char:
+            hasWon = True
         
         ## TODO: Chech if the text of the diagonal buttons equals char
-        
-        
+
+        if self.buttons[0]['text'] == self.buttons[4]['text'] == self.buttons[8]['text'] == char:
+            hasWon = True
+        if self.buttons[2]['text'] == self.buttons[4]['text'] == self.buttons[6]['text'] == char:
+            hasWon = True
+            
+
         if hasWon:
             ## Disable all buttons
+            player='1'
+            if not self.player_turn:
+                player='2'
             self.disable_all_buttons()
             tkinter.messagebox.showinfo("Tic-Tac-Toe", 'Player {} Wins'.format(player))
 
@@ -132,10 +125,12 @@ class TTTGame:
         elif self.moves_made == 9:
             tkinter.messagebox.showinfo("Tic-Tac-Toe", "It is a tie")
 
+
     def run(self):
         self.board.mainloop()
+
+
 
 if __name__ == '__main__':
     game = TTTGame()
     game.run()
-    
