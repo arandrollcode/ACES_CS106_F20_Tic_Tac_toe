@@ -1,5 +1,6 @@
 from tkinter import *
 import tkinter.messagebox
+import tkinter.font as font
 import random
 
 class TTTGame:
@@ -18,19 +19,21 @@ class TTTGame:
     ## Create a single button
     def create_button(self):
         b = Button(self.board, command=lambda:self.button_click(b))
-
+        m = 1.25
+                
         ## TODO: Change the font, size, color of the button to your liking
         ## https://www.tutorialspoint.com/python/tk_button.htm
+        my_font = font.Font(size=int(30*m), weight='bold')
 
         b['bg'] = 'CadetBlue1'
         b['activebackground'] = 'green2'
-        b['font'] = 'Helvetica'
+        b['font'] = my_font
         b['fg'] = 'deep pink'
-        b['bd'] = 10
-        b['height'] = 8
-        b['width'] = 20
+        b['bd'] = int(12*m)
+        b['height'] = int(2*m)
+        b['width'] = int(5*m)
         b['relief'] = RAISED
-        
+
         return b
 
 
