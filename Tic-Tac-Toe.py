@@ -19,19 +19,19 @@ class TTTGame:
     ## Create a single button
     def create_button(self):
         b = Button(self.board, command=lambda:self.button_click(b))
-        m = 1.25
+        m = 1.5
                 
         ## TODO: Change the font, size, color of the button to your liking
         ## https://www.tutorialspoint.com/python/tk_button.htm
-        my_font = font.Font(size=int(30*m), weight='bold')
+        my_font = font.Font(size=int(25*m), weight='bold')
 
         b['bg'] = 'CadetBlue1'
         b['activebackground'] = 'green2'
         b['font'] = my_font
         b['fg'] = 'deep pink'
         b['bd'] = int(12*m)
-        b['height'] = int(2*m)
-        b['width'] = int(5*m)
+        b['height'] = int(1.5*m)
+        b['width'] = int(4*m)
         b['relief'] = RAISED
 
         return b
