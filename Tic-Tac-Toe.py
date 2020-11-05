@@ -28,7 +28,6 @@ class TTTGame:
         b['bg'] = 'CadetBlue1'
         b['activebackground'] = 'green2'
         b['font'] = my_font
-        b['fg'] = 'deep pink'
         b['bd'] = int(12*m)
         b['height'] = int(1.5*m)
         b['width'] = int(4*m)
@@ -56,10 +55,12 @@ class TTTGame:
         if self.player_turn:
             ## TODO: Change button text to 'X' and button state to disabled
             button['text'] = 'X'
+            button['disabledforeground'] = 'blue2'
             button['state'] = DISABLED
         else:
             ## TODO: Change button text to 'O' and button state to disabled
             button['text'] = 'O'
+            button['disabledforeground'] = 'red2'
             button['state'] = DISABLED
             
         ## TODO: Add 1 to self.moves_made
