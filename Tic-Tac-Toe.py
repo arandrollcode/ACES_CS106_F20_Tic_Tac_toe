@@ -91,29 +91,24 @@ class TTTGame:
         
         ## TODO: Check if the text of three buttons in a row equals char
 
-        if self.buttons[0]['text'] == self.buttons[1]['text'] == self.buttons[2]['text'] == char:
-            hasWon = True
-        if self.buttons[3]['text'] == self.buttons[4]['text'] == self.buttons[5]['text'] == char:
-            hasWon = True
-        if self.buttons[6]['text'] == self.buttons[7]['text'] == self.buttons[8]['text'] == char:
+        if ((self.buttons[0]['text'] == self.buttons[1]['text'] == self.buttons[2]['text'] == char) or
+            (self.buttons[3]['text'] == self.buttons[4]['text'] == self.buttons[5]['text'] == char) or
+            (self.buttons[6]['text'] == self.buttons[7]['text'] == self.buttons[8]['text'] == char)):
             hasWon = True
 
         ## TODO: Check if the text of three buttons in a column equals char
 
-        if self.buttons[0]['text'] == self.buttons[3]['text'] == self.buttons[6]['text'] == char:
-            hasWon = True
-        if self.buttons[1]['text'] == self.buttons[4]['text'] == self.buttons[7]['text'] == char:
-            hasWon = True
-        if self.buttons[2]['text'] == self.buttons[5]['text'] == self.buttons[8]['text'] == char:
-            hasWon = True
-        
-        ## TODO: Chech if the text of the diagonal buttons equals char
-
-        if self.buttons[0]['text'] == self.buttons[4]['text'] == self.buttons[8]['text'] == char:
-            hasWon = True
-        if self.buttons[2]['text'] == self.buttons[4]['text'] == self.buttons[6]['text'] == char:
+        if ((self.buttons[0]['text'] == self.buttons[3]['text'] == self.buttons[6]['text'] == char) or
+            (self.buttons[1]['text'] == self.buttons[4]['text'] == self.buttons[7]['text'] == char) or
+            (self.buttons[2]['text'] == self.buttons[5]['text'] == self.buttons[8]['text'] == char)):
             hasWon = True
             
+        ## TODO: Chech if the text of the diagonal buttons equals char
+
+        if ((self.buttons[0]['text'] == self.buttons[4]['text'] == self.buttons[8]['text'] == char) or
+            (self.buttons[2]['text'] == self.buttons[4]['text'] == self.buttons[6]['text'] == char)):
+            hasWon = True
+
 
         if hasWon:
             ## Disable all buttons
